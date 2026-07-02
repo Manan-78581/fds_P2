@@ -1,0 +1,21 @@
+[project]
+name = "gamekey-platform"
+version = "0.1.0"
+description = "Deployable game key marketplace API"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "markdown-pdf>=1.13.1",
+    "Django>=5.2",
+    "djangorestframework>=3.16",
+    "python-decouple>=3.8",
+    "django-cors-headers>=4.7",
+    "whitenoise>=6.9",
+    "celery>=5.5",
+    "redis>=6.2",
+    "dj-database-url>=2.3",
+    "psycopg[binary]>=3.2",
+    "gunicorn>=23.0",
+    "pytest>=8.4",
+    "pytest-django>=4.11",
+]

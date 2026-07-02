@@ -1,0 +1,39 @@
+services:
+  web:
+    build: .
+    command: uv run gunicorn gamekey_platform.wsgi:application --bind 0.0.0.0:8000
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - db
+
+  worker:
+    build: .
+    command: uv run celery -A gamekey_platform worker --loglevel=info
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - db
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: gamekey
+      POSTGRES_USER: gamekey
+      POSTGRES_PASSWORD: gamekey
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
