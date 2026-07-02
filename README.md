@@ -30,8 +30,4 @@ npm install
 npm start
 ```
 
-## Deployment
 
-- Backend deploys from `backend/`
-- Frontend deploys from `frontend/`
-- Keep `backend/.env` and `frontend/node_modules/` out of Git
